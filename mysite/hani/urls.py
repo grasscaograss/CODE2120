@@ -18,7 +18,7 @@ from django.urls import include, path, re_path
 from django.conf.urls import url, include
 from django.urls import path
 from . import views
-urlpatterns = [path(r'api/',views.api)
+urlpatterns = [path(r'api/<str_a>',views.api)
     #path('admin/', admin.site.urls),
     #path(r'example/', include('example.urls')),
     #path(r'hani/', include('hani.urls'))
