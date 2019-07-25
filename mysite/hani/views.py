@@ -6,7 +6,7 @@ from .models import *
 import requests
 import os,sys
 # Create your views here.
-
+@csrf_exempt
 def api(request,str_a):
 	jsob={}
 	log=[]
@@ -18,7 +18,7 @@ def api(request,str_a):
 		response = requests.get(url).text
 		dic = {}
 		dic = json.loads(response)
-		return JsonResponse("Weather: %s" %  dic.get('weather'),safe=False)
+		return JsonResponse("Weather: %s" %  dic.get('weather'),safe=False) 
 			
 
 	except Exception as e:
@@ -29,4 +29,3 @@ def api(request,str_a):
 		return JsonResponse({"isError": True, "error":str(e), "errorType":errorType, "function":fname, "line":exc_tb.tb_lineno, "log":log})
 	else:
 		return HttpResponse("<h1>ONLY POST REQUESTS</h1>")
-@csrf_exempt
