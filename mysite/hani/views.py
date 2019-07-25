@@ -27,7 +27,7 @@ def api(request,str_a):
 		fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
 		errorType = str(exc_type)
 		return JsonResponse({"isError": True, "error":str(e), "errorType":errorType, "function":fname, "line":exc_tb.tb_lineno, "log":log})
-else:
-	return HttpResponse("<h1>ONLY POST REQUESTS</h1>")
+	else:
+		return HttpResponse("<h1>ONLY POST REQUESTS</h1>")
 
 @csrf_exempt
